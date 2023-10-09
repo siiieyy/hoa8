@@ -1,0 +1,23 @@
+- name: Install Nagios Core
+  apt:
+    name: nagios3
+    state: present
+  when: ansible_distribution == "Ubuntu"
+
+- name: Install Nagios Plugins
+  apt:
+    name: nagios-plugins
+    state: present
+  when: ansible_distribution == "Ubuntu"
+
+- name: Install Nagios Core
+  dnf:
+    name: nagios
+    state: present
+  when: ansible_distribution == "CentOS"
+
+- name: Install Nagios Plugins
+  dnf:
+    name: nagios-plugins-all
+    state: present
+  when: ansible_distribution == "CentOS"
